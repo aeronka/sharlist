@@ -7,13 +7,24 @@
     border: 1px solid #dddee6;
 }
 
+.content:before {
+    content: '';
+    top: 32px;
+    left: 50px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: url(../icons/pin_Red.png) no-repeat;
+    background-size: contain;
+}
+
 .list_name {
     padding: 5px 7px;
     font-size: 17px;
     text-align: center;
     display: inline-block;
     border-bottom: 1px solid #dddee6;
-    margin-left: 40px;
+    margin-left: 100px;
     margin-top: 25px;
 }
 
@@ -21,13 +32,6 @@
     padding: 0px 25px;
     margin: 15px 118px;
     font-size: 16px;
-}
-
-.list_name_pin {
-    margin-top: 10px;
-    margin-left: 50px;
-    height: 30px;
-    display: inline-block;
 }
 
 .choice {
@@ -49,7 +53,7 @@
     font-size: 15px;
     padding: 2px;
     border-radius: 3px;
-    margin: 4px -22px;
+    margin: 4px 0 4px -22px;
     border: 1px solid #dddee6;
 }
 

@@ -5,7 +5,8 @@
 
 body {
     font-family: Arial, Helvetica, Calibri, sans-serif;
-    height: 100%;
+    background: url(../icons/picture_start.jpg);
+    background-size: cover;
 }
 
 .page {

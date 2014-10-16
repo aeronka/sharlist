@@ -9,18 +9,17 @@ body {
 }
 
 .page {
-    margin: auto auto;
+    margin: auto;
     width: 870px;
     height: 100%;
 }
 
 .logo {
-    margin-left: -75%;
-    margin-top: 10%;
+    margin-top: 90px;
+    text-indent: 22px;
     opacity: 0.4;
     font: normal 50px/normal "Black Ops One", Helvetica, sans-serif;
     color: rgba(25,13,0,0.92);
-    text-align: center;
     text-shadow: -1px -1px 1px rgb(255,255,255) , 1px 1px 1px rgb(0,0,0) ;
 }
 
@@ -134,13 +133,12 @@ body {
 
 .add_color {
     position: absolute;
-    margin-left: 165px;
-    margin-top: -210px;
+    top: 230px;
+    left: 465px;
     z-index: 2;
 }
 
 .color {
-    z-index: 1;
     height: 58px;
     width: 114px;
     padding: 3px;
@@ -204,8 +202,7 @@ body {
 }
 
 .arrow {
-    position: relative;
-    z-index: 1;
+    position: absolute;
     display: inline-block;
     font-size: 30px;
     color: #FFFFFF;
