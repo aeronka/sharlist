@@ -43,6 +43,16 @@ body {
 
 .menu_elem {
     margin: 10px 0px;
+    position: relative;
+}
+
+.button_legend:active {
+    outline: none;
+    box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.6);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+    background: -o-linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+    background: -moz-linear-gradient(top, #DCDCDC, #eee9e9);
+    background: linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
 }
 
 .menu_button {
@@ -87,7 +97,6 @@ body {
 
 .filter {
     position: absolute;
-    z-index: 0;
     opacity: 0;
 }
 
@@ -97,6 +106,17 @@ body {
     font-size: 15px;
     padding: 3px 7px;
     display: inline-block;
+}
+
+.filter:checked + .filter_text{
+    background: #DCDCDC;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.6);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+    background: -o-linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+    background: -moz-linear-gradient(top, #DCDCDC, #eee9e9);
+    background: linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
 }
 
 .separator {
@@ -127,14 +147,15 @@ body {
     margin-left: 34px;
     margin-top: 10px;
     display: block;
+    -webkit-user-select: all;
 }
 
 /***   Color   ***/
 
 .add_color {
     position: absolute;
-    top: 230px;
-    left: 465px;
+    top: -47px;
+    left: 139px;
     z-index: 2;
 }
 
@@ -197,12 +218,10 @@ body {
     background: #1874CD;
 }
 
-.wrap {
-    margin: -96px 0px 0px -2px;
-}
-
 .arrow {
     position: absolute;
+    top: 42px;
+    left: -2px;
     display: inline-block;
     font-size: 30px;
     color: #FFFFFF;
@@ -210,5 +229,5 @@ body {
     -moz-transform: scaleX(0.7);
     -o-transform: scaleX(0.7);
     transform: scaleX(0.7);
-    text-shadow: -5px 0px 3px rgba(0, 0, 0, 0.2)
+    text-shadow: -4px 0px 6px rgba(0, 0, 0, 0.3);
 }

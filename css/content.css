@@ -49,11 +49,11 @@
 }
 
 .new_elem {
-    width: 165px;
+    width: 170px;
     font-size: 15px;
     padding: 2px;
     border-radius: 3px;
-    margin: 4px 0 4px -22px;
+    margin: 10px 0px 4px -22px;
     border: 1px solid #dddee6;
 }
 
@@ -67,7 +67,7 @@
 /*  ----  List page style content legend----  */
 
 .legend {
-    padding: 8px 15px;
+    padding: 8px 15px 0px 15px;
     border: 1px solid #e8eaf2;
     border-radius: 2px;
     width: 160px;
@@ -94,11 +94,15 @@
 .legend_colors {
     list-style: none;
     background: #ffffff;
-    margin-bottom: 3px;
+    margin-bottom: 9px;
     opacity: 0.9;
 }
 
 .legend_colors_elem {
+    padding: 7px 3px;
+}
+
+.legend_colors_elem:first-child{
     padding: 5px 3px;
 }
 
