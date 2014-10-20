@@ -80,7 +80,6 @@ body {
 }
 
 .tumbler {
-    border: 1px solid #B3B3B3;
     border-radius: 3px;
     text-align: center;
     display: inline-block;
@@ -93,6 +92,20 @@ body {
 
 .label {
     cursor: pointer;
+}
+
+.left {
+    border-top: 1px solid #B3B3B3;
+    border-left: 1px solid #B3B3B3;
+    border-bottom: 1px solid #B3B3B3;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.right {
+    border-top: 1px solid #B3B3B3;
+    border-right: 1px solid #B3B3B3;
+    border-bottom: 1px solid #B3B3B3;
+    border-radius: 0px 3px 3px 0px;
 }
 
 .filter {
@@ -108,11 +121,20 @@ body {
     display: inline-block;
 }
 
-.filter:checked + .filter_text{
+.filter:checked + .left {
     background: #DCDCDC;
     outline: none;
-    border-radius: 3px;
     box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.6);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+    background: -o-linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+    background: -moz-linear-gradient(top, #DCDCDC, #eee9e9);
+    background: linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+}
+
+.filter:checked + .right {
+    background: #DCDCDC;
+    outline: none;
+    box-shadow: 1px -2px 1px -1px rgba(0,0,0,0.6);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
     background: -o-linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
     background: -moz-linear-gradient(top, #DCDCDC, #eee9e9);
