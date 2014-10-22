@@ -30,12 +30,13 @@
 
 .list {
     padding: 0px 25px;
-    margin: 15px 118px;
+    margin: 15px 200px 0px 118px;
     font-size: 16px;
 }
 
 .choice {
-    margin: 5px -45px;
+    top: 10px;
+    left: -45px;
     position: absolute;
     border-radius: 5px;
     height: 8px;
@@ -46,6 +47,8 @@
 
 .list_elem {
     padding: 6px 0;
+    position: relative;
+    cursor: pointer;
 }
 
 .new_elem {
@@ -58,11 +61,14 @@
 }
 
 .sublist {
-    margin: 4px 18px;
+    margin: 4px 0px 0px 18px;
     list-style: none;
     font-size: 14px;
 }
 
+.removed {
+    text-decoration: line-through;
+}
 
 /*  ----  List page style content legend----  */
 
@@ -73,7 +79,7 @@
     width: 160px;
     position: absolute;
     top: 75px;
-    right: 50px;
+    right: 35px;
     background-image: url(../icons/doski.jpg);
     background-size: 100%;
 }
