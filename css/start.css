@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, Calibri, sans-serif;
+    background: url(../icons/picture_start.jpg);
+    background-size: cover;
+}
+
+.page {
+    margin: auto auto;
+    width: 870px;
+    height: 100%;
+}
+
+/*  ----  Start page style  ----  */
+
+.picture_start {
+    border: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: auto auto;
+}
+
+.explanation {
+    padding: 3px 0;
+    margin-top: 45%;
+    margin-left: 80px;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.text {
+    padding: 0 4px;
+    margin-left: 10px;
+    margin-top: 45%;
+    margin-right: 10px;
+    width: 350px;
+    font-size: 25px;
+    border: 0px;
+    display: inline-block;
+    position: relative;
+    overflow: auto;
+}
+
+.ok {
+    position: relative;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 1px 6px;
+    margin-top: 45%;
+    display: inline-block;
+    text-align: center;
+    background: none;
+}
