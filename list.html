@@ -5,8 +5,9 @@
         <title>Sharlist</title>
         <link rel="stylesheet" type="text/css" href="css/leftPart.css">
         <link rel="stylesheet" type="text/css" href="css/content.css">
-        <!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="script.js"></script>  -->
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="js/list.js"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
         <div class="page">
@@ -16,7 +17,7 @@
                     <li class="menu_elem"><button class="menu_button button_legend">Показать легенду</button></li>
                     <li class="menu_elem">
                         <button class="menu_button button_color_active">Выбрать цвет &#9656;</button>
-                        <div class="add_color">
+                        <div class="add_color" hidden="true">
                             <div class="color">
                                 <span class="color_elem red"></span>
                                 <span class="color_elem orange"></span>
@@ -45,12 +46,12 @@
                 <h2 class="list_name">В путь:</h2>
                 <div class="list">
                     <ol>
-                        <li class="list_elem"><div class="choice purple"> </div>
+                         <li class="list_elem"><div class="choice purple"> </div>
                             <span>Палатка</span>
                         </li>
                         <li class="list_elem"><div class="choice green"> </div>
                             <span>Спальник в чехле на синтепоне с простроченной молнией сбоку, размер S температурой 10</span>
-                        </li>
+                        </li><!--
                         <li class="list_elem"><div class="choice green"> </div>
                             <span>Котелок</span>
                         </li>
@@ -63,11 +64,11 @@
                         </li>
                         <li class="list_elem"><div class="choice red"> </div>
                             <span class="removed">Пенка</span>
-                        </li>
+                        </li> -->
                     </ol>
-                    <input class="new_elem" type="text" placeholder="новый элемент">
+                    <form><input class="new_elem" type="text" name="new_elem" placeholder="новый элемент"></form>
                 </div>
-                <div class="legend">
+                <div class="legend" hidden="true">
                     <h3 class="legend_name">Легенда</h3>
                     <ul class="legend_colors">
                         <li class="legend_colors_elem">

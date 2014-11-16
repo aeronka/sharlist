@@ -5,6 +5,7 @@
     background-image: url(../icons/wall4.png);
     position: relative;
     border: 1px solid #dddee6;
+    min-height: 295px;
 }
 
 .content:before {
@@ -52,11 +53,11 @@
 }
 
 .new_elem {
-    width: 170px;
+    width: 185px;
     font-size: 15px;
     padding: 2px;
     border-radius: 3px;
-    margin: 10px 0px 4px -22px;
+    margin: 10px 0px 4px -45px;
     border: 1px solid #dddee6;
 }
 
