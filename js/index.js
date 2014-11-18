@@ -1,17 +1,15 @@
 $(document).ready(function() {
 	var list = new List($('.list_elem'));
 
-	//событие добавления списка/подсписка
+	//событие добавления
 	$('form').submit(function(event) {
 		event.preventDefault();
 		list.add();
 	});
 
-	//событие вычеркивания для списка
+	//событие вычеркивания
 	$('.list').on('click', '.list_elem', function(eventObject) {
-		var g = $('.list_elem');
-		var index = g.index(this);
-		console.log(g);
+		var index = $('.list_elem').index(this);
 		list.remove(eventObject, index);
 		
 	});
