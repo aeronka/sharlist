@@ -28,9 +28,33 @@ List.prototype = {
 		this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
 		this.$create.val('').focus();
 	},
-	remove: function() {},
+	remove: function(removedElem, index) {
+		var item = $(removedElem.currentTarget);
+		if (item.hasClass('removed')) 
+			{
+				item.removeClass('removed');
+			}
+		else {
+				item.addClass('removed');
+			}
+		for (var i = 0; i < this.itog.length; i++) {
+			if (index === i) this.itog[i] = item[0].outerHTML; 
+		};
+	},
 	addColor: function() {},
 	addSublist: function() {},
-	filter: function() {}
+	filter: function(eventObject) {
+		var item = eventObject.currentTarget;
+		var removedElem = $('.removed', 'ol');
+		console.log(item.value);
+		console.log(removedElem);
+		if (item.value = 'all') 
+			{
+				removedElem.show();
+			}
+		else {
+				removedElem.hide();
+			}
+	}
 };
 List.prototype.constructor = List;
