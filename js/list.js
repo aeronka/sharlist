@@ -80,8 +80,6 @@ List.prototype = {
 	filter: function(eventObject) {
 		var item = eventObject.currentTarget;
 		var removedElem = $('.removed', 'ol');
-		console.log(item.value);
-		console.log(removedElem);
 		if (item.value === 'remaining')
 			{
 				removedElem.hide();
