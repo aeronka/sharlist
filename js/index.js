@@ -1,7 +1,7 @@
-$(document).ready(function () {
+$(document).ready(function() {
 	var list = new List($('.list_elem'));
 
-	//событие добавления
+	//событие добавления списка/подсписка
 	$('form').submit(function(event) {
 		event.preventDefault();
 		list.add();

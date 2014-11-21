@@ -4,6 +4,7 @@ function List(elem) {
 	this.finalList = '';
 	this.itog = [];
 	this.$create = $('.new_elem');
+	this.sublist = [];
 
 	//сделаем чистый список элементов
 	elem.each( function(i,n) {
@@ -18,15 +19,20 @@ List.prototype = {
 
 		//проверяем пустой ли элемент хочет добавить пользователь и если нет, то добавляем в объект последним
 		if (!newElem) return;
-		this.itog.push('<li class="list_elem"><div> </div><span>'+ newElem +'</span></li>');
 
-		//склеим в строку все элементы списка
-		this.finalList = this.itog.join('');
+		//проверим первый символ из нового элемента
+		if (newElem[0] === ' ') this.addSublist(newElem);
+		else {
+			this.itog.push('<li class="list_elem"><div> </div><span>'+ newElem +'</span></li>');
 
-		//обновленный список добавим на страницу
-		$('ol', this.$tagList).detach();
-		this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
-		this.$create.val('').focus();
+			//склеим в строку все элементы списка
+			this.finalList = this.itog.join('');
+
+			//обновленный список добавим на страницу
+			$('ol', this.$tagList).detach();
+			this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
+			this.$create.val('').focus();
+		}
 	},
 	remove: function(removedElem, index) {
 		var item = $(removedElem.currentTarget);
@@ -42,18 +48,46 @@ List.prototype = {
 		};
 	},
 	addColor: function() {},
-	addSublist: function() {},
+	addSublist: function(newElemAll) { 
+		//убираем пробел от элемента подсписка
+		var newElem = newElemAll.substring(1);
+		var finalSublist = '';
+		this.sublist.push('<li class="list_elem">'+ newElem +'</li>');
+		//склеим в строку все элементы подсписка
+		finalSublist = '<ul class="sublist">' + this.sublist.join('') + '</ul>';
+
+		//номер последнего эл-та в списке
+		var lastElemNom = this.itog.length - 1;
+
+		//сам элемент, которому создаётся подсписок
+		var listElemSublist = this.itog[lastElemNom];
+		var numEnd;
+		// проверка первый ли элемент в подсписке
+		if (this.sublist.length === 1) numEnd = listElemSublist.indexOf('</li>');
+		else numEnd = listElemSublist.indexOf('</span><ul');
+
+		//перезапишем последний элемет добавив подсписок
+		this.itog[lastElemNom] = listElemSublist.substring(0, numEnd) + finalSublist + '</li>';
+
+		//склеим в строку все элементы списка
+		this.finalList = this.itog.join('');
+
+		//обновленный список добавим на страницу
+		$('ol', this.$tagList).detach();
+		this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
+		this.$create.val('').focus();
+	},
 	filter: function(eventObject) {
 		var item = eventObject.currentTarget;
 		var removedElem = $('.removed', 'ol');
 		console.log(item.value);
 		console.log(removedElem);
-		if (item.value = 'all') 
+		if (item.value === 'remaining')
 			{
-				removedElem.show();
+				removedElem.hide();
 			}
 		else {
-				removedElem.hide();
+				removedElem.show();
 			}
 	}
 };
