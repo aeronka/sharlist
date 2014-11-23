@@ -7,9 +7,11 @@ $(document).ready(function() {
 		list.add();
 	});
 
-	//событие вычеркивания
+	//событие вычеркивания для списка
 	$('.list').on('click', '.list_elem', function(eventObject) {
-		var index = $('.list_elem').index(this);
+		var g = $('.list_elem');
+		var index = g.index(this);
+		console.log(g);
 		list.remove(eventObject, index);
 		
 	});

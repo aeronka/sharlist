@@ -64,7 +64,7 @@ List.prototype = {
 		var numEnd;
 		// проверка первый ли элемент в подсписке
 		if (this.sublist.length === 1) numEnd = listElemSublist.indexOf('</li>');
-		else numEnd = listElemSublist.indexOf('</span><ul');
+		else numEnd = listElemSublist.indexOf('</span><ul') + 7;
 
 		//перезапишем последний элемет добавив подсписок
 		this.itog[lastElemNom] = listElemSublist.substring(0, numEnd) + finalSublist + '</li>';
