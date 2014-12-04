@@ -67,6 +67,7 @@ List.prototype = {
 	},
 
 	addColor: function() {},
+
 	addSublist: function(newElemAll) { 
 		//убираем пробел от элемента подсписка
 		var newElem = newElemAll.substring(1);
