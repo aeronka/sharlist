@@ -9,9 +9,9 @@ $(document).ready(function() {
 
 	//событие вычеркивания
 	$('.list').on('click', '.list_elem', function(eventObject) {
+		eventObject.stopPropagation();	
 		var index = $('.list_elem').index(this);
 		list.remove(eventObject, index);
-		
 	});
 
 	//фильтр списка

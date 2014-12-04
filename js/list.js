@@ -36,13 +36,31 @@ List.prototype = {
 	},
 	remove: function(removedElem, index) {
 		var item = $(removedElem.currentTarget);
-		if (item.hasClass('removed')) 
-			{
+		var child = $('.list_elem', item);
+		//проверка на подсписок (элемент относится к подсписку или нет)
+		var sublist = !!removedElem.currentTarget.parentElement.className;
+		if (!sublist) {
+			if (item.hasClass('removed')) {
 				item.removeClass('removed');
+				child.removeClass('removed');
 			}
-		else {
+			else {
 				item.addClass('removed');
+				child.each(function() {
+					if (!$(this).hasClass('removed')) $(this).addClass('removed');
+				});
 			}
+		}
+		else {
+			if (!item.parents('.list_elem').hasClass('removed')) {
+				if (item.hasClass('removed')) {
+					item.removeClass('removed');
+				}
+				else {
+					item.addClass('removed');
+				}
+			}
+		}
 		for (var i = 0; i < this.itog.length; i++) {
 			if (index === i) this.itog[i] = item[0].outerHTML; 
 		};
