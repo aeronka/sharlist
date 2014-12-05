@@ -1,7 +1,9 @@
 $(document).ready(function() {
-	var list = new List($('.list_elem'));
 	var pallet = new Pallet($('.add_color'));
+	var list = new List($('.list_elem'));
+	var legend = new Legend($('.legend'));
 	var $choosedColor = $('.choosed_color');
+	var $buttonColor = $('.button_color');
 	$choosedColor.hide();
 
 	//событие добавления
@@ -10,11 +12,18 @@ $(document).ready(function() {
 		list.add();
 	});
 
-	//событие вычеркивания
+	//событие нажатия на элемент списка (вычеркивание и добавление цвета)
 	$('.list').on('click', '.list_elem', function(eventObject) {
-		eventObject.stopPropagation();	
+		eventObject.stopPropagation();
 		var index = $('.list_elem').index(this);
-		list.remove(eventObject, index);
+		if ($buttonColor.hasClass('color_active')) {
+			// добавление цвета
+			list.addColor(eventObject, pallet.colorClass, index);
+		}
+		else {
+			// вычеркивание
+			list.remove(eventObject, index);
+		}
 	});
 
 	//фильтр списка
@@ -34,9 +43,15 @@ $(document).ready(function() {
 
 	//нажатие на цвет в палитре
 	$('.menu_elem').on('click', '.color_elem', function(eventObject) {
-		var parent = $('.button_color');
-		var colorClass = eventObject.currentTarget.className.substring(11);
-		pallet.hide(parent[0], 1, $choosedColor, colorClass);
+		var parent = $buttonColor;
+		var color = eventObject.currentTarget.className.substring(11);
+		pallet.hide(parent[0], 1, $choosedColor, color);
+	});
+
+	//нажатие на "показать легенду"
+	$('.menu').on('click', '.button_legend', function(eventObject) {
+		if ($('.legend').is(':visible')) legend.hide(eventObject.currentTarget);
+		else legend.show(eventObject.currentTarget);
 	});
 
 });

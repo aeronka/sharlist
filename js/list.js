@@ -66,7 +66,11 @@ List.prototype = {
 		this.itog[index] = item[0].outerHTML; 
 	},
 
-	addColor: function() {},
+	addColor: function(eventObject, colorClass, index) {
+		var item = $(eventObject.currentTarget);
+		item.children('div').removeClass().addClass('choice ' + colorClass);
+		this.itog[index] = item[0].outerHTML; 
+	},
 
 	addSublist: function(newElemAll) { 
 		//убираем пробел от элемента подсписка
