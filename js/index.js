@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	var list = new List($('.list_elem'));
 	var pallet = new Pallet($('.add_color'));
+	var $choosedColor = $('.choosed_color');
+	$choosedColor.hide();
 
 	//событие добавления
 	$('form').submit(function(eventObject) {
@@ -21,7 +23,7 @@ $(document).ready(function() {
 	});
 
 	//нажатие кнопки "Выбрать цвет"
-	$('.button_color').click(function(eventObject) {
+	$('.menu').on('click', '.button_color', function(eventObject) {
 		if ($(eventObject.currentTarget).hasClass('color_active')) {
 			pallet.hide(eventObject.currentTarget);
 		}
@@ -31,9 +33,10 @@ $(document).ready(function() {
 	});
 
 	//нажатие на цвет в палитре
-	$('.color_elem').click(function() {
+	$('.menu_elem').on('click', '.color_elem', function(eventObject) {
 		var parent = $('.button_color');
-		pallet.hide(parent[0], 1);
+		var colorClass = eventObject.currentTarget.className.substring(11);
+		pallet.hide(parent[0], 1, $choosedColor, colorClass);
 	});
 
 });

@@ -1,5 +1,6 @@
 function Pallet(pal) {
 	this.$pallet = $('.add_color');
+	this.$newChoosedColor = $('.choosed_color');
 }
 
 Pallet.prototype = {
@@ -8,10 +9,16 @@ Pallet.prototype = {
 		//$(eventObject)[0].innerText = 'Выбран цвет ▸';
 		this.$pallet.show();
 	},
-	hide: function(eventObject, flag) {
-		$(eventObject).removeClass('color_active');
+	hide: function(eventObject, flag, choosedColor, colorClass) {
+		if (flag) {
+			$(eventObject)[0].innerText = 'Выбран цвет ▸';
+			$(choosedColor).show().removeClass().addClass('choosed_color ' + colorClass);
+		}
+		else {
+			$(eventObject).removeClass('color_active');
+			this.$newChoosedColor.hide().removeClass().addClass('choosed_color');
+		}
 		this.$pallet.hide();
-		if (flag) $(eventObject)[0].innerText = 'Выбран цвет ▸';
 	},
 	chooseColor: function() {}
 };
