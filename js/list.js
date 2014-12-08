@@ -26,7 +26,7 @@ List.prototype = {
 			this.addSublist(newElem);
 		}
 		else {
-			this.itog.push('<li class="list_elem"><div> </div><span>'+ newElem +'</span></li>');
+			this.itog.push('<li class="list_elem"><div class="choice"> </div><span>'+ newElem +'</span></li>');
 
 			//склеим в строку все элементы списка
 			this.finalList = this.itog.join('');

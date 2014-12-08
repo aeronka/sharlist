@@ -11,9 +11,12 @@ Pallet.prototype = {
 	},
 	hide: function(eventObject, flag, choosedColor, color) {
 		this.colorClass = color;
-		if (flag) {
+		if (flag === 1) {
 			$(eventObject)[0].innerText = 'Выбран цвет ▸';
 			$(choosedColor).show().removeClass().addClass('choosed_color ' + this.colorClass);
+		}
+		else if (flag === 2) {
+			$(eventObject)[0].innerText = 'Удаление цвета';
 		}
 		else {
 			$(eventObject).removeClass('color_active');
