@@ -2,8 +2,8 @@ $(document).ready(function() {
 	var list = new List($('.list_elem'));
 
 	//событие добавления
-	$('form').submit(function(event) {
-		event.preventDefault();
+	$('form').submit(function(eventObject) {
+		eventObject.preventDefault();
 		list.add();
 	});
 

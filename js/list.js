@@ -19,21 +19,23 @@ List.prototype = {
 
 		//проверяем пустой ли элемент хочет добавить пользователь и если нет, то добавляем в объект последним
 		if (!newElem) return;
+		console.log(!!(~this.itog[this.itog.length - 1].indexOf('ul')));
 
 		//проверим первый символ из нового элемента
-		if (newElem[0] === ' ') this.addSublist(newElem);
+		if (newElem[0] === ' ')  /*{if ((this.itog[this.itog.length - 1]).last-child ) this.sublist = []; */this.addSublist(newElem);
 		else {
 			this.itog.push('<li class="list_elem"><div> </div><span>'+ newElem +'</span></li>');
 
 			//склеим в строку все элементы списка
 			this.finalList = this.itog.join('');
-
+		}
 			//обновленный список добавим на страницу
 			$('ol', this.$tagList).detach();
 			this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
 			this.$create.val('').focus();
-		}
+		
 	},
+
 	remove: function(removedElem, index) {
 		var item = $(removedElem.currentTarget);
 		var child = $('.list_elem', item);
@@ -46,9 +48,7 @@ List.prototype = {
 			}
 			else {
 				item.addClass('removed');
-				child.each(function() {
-					if (!$(this).hasClass('removed')) $(this).addClass('removed');
-				});
+				child.addClass('removed');
 			}
 		}
 		else {
@@ -61,10 +61,9 @@ List.prototype = {
 				}
 			}
 		}
-		for (var i = 0; i < this.itog.length; i++) {
-			if (index === i) this.itog[i] = item[0].outerHTML; 
-		};
+		this.itog[index] = item[0].outerHTML; 
 	},
+
 	addColor: function() {},
 	addSublist: function(newElemAll) { 
 		//убираем пробел от элемента подсписка
@@ -82,7 +81,7 @@ List.prototype = {
 		var numEnd;
 		// проверка первый ли элемент в подсписке
 		if (this.sublist.length === 1) numEnd = listElemSublist.indexOf('</li>');
-		else numEnd = listElemSublist.indexOf('</span><ul') + 7;
+		else numEnd = listElemSublist.indexOf('</span>') + 7;
 
 		//перезапишем последний элемет добавив подсписок
 		this.itog[lastElemNom] = listElemSublist.substring(0, numEnd) + finalSublist + '</li>';
@@ -91,10 +90,12 @@ List.prototype = {
 		this.finalList = this.itog.join('');
 
 		//обновленный список добавим на страницу
-		$('ol', this.$tagList).detach();
+		/*$('ol', this.$tagList).detach();
 		this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
-		this.$create.val('').focus();
+		this.$create.val('').focus();*/
+		console.log(this.sublist);
 	},
+
 	filter: function(eventObject) {
 		var item = eventObject.currentTarget;
 		var removedElem = $('.removed', 'ol');
