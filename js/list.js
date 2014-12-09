@@ -19,10 +19,12 @@ List.prototype = {
 
 		//проверяем пустой ли элемент хочет добавить пользователь и если нет, то добавляем в объект последним
 		if (!newElem) return;
-		console.log(!!(~this.itog[this.itog.length - 1].indexOf('ul')));
 
-		//проверим первый символ из нового элемента
-		if (newElem[0] === ' ')  /*{if ((this.itog[this.itog.length - 1]).last-child ) this.sublist = []; */this.addSublist(newElem);
+		//проверим первый символ из нового элемента, и является ли элемент началом подсписка
+		if (newElem[0] === ' ') { 
+			if (!~this.itog[this.itog.length - 1].indexOf('ul')) this.sublist = []; 
+			this.addSublist(newElem);
+		}
 		else {
 			this.itog.push('<li class="list_elem"><div> </div><span>'+ newElem +'</span></li>');
 
@@ -88,23 +90,20 @@ List.prototype = {
 
 		//склеим в строку все элементы списка
 		this.finalList = this.itog.join('');
-
-		//обновленный список добавим на страницу
-		/*$('ol', this.$tagList).detach();
-		this.$tagList.prepend('<ol>'+ this.finalList +'</ol>');
-		this.$create.val('').focus();*/
-		console.log(this.sublist);
 	},
 
 	filter: function(eventObject) {
 		var item = eventObject.currentTarget;
 		var removedElem = $('.removed', 'ol');
+		var newElem = $('.new_elem', '.list');
 		if (item.value === 'remaining')
 			{
 				removedElem.hide();
+				newElem.hide();
 			}
 		else {
 				removedElem.show();
+				newElem.show();
 			}
 	}
 };
