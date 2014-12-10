@@ -1,5 +1,6 @@
 function Legend(legend) {
 	this.$legend = legend;
+	this.itogLegend = [];
 }
 
 Legend.prototype = {

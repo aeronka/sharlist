@@ -17,10 +17,12 @@ $(document).ready(function() {
 		eventObject.stopPropagation();
 		var index = $('.list_elem').index(this);
 		if ($buttonColor.hasClass('color_active')) {
-			console.log($choosedColor.css('background-color'));
 			// добавление цвета
-			if ($choosedColor.css('background-color') === /*проверка на отсутствие цвета*/) {
-				pallet.hide($('.button_color').currentTarget, 2);
+			if ($choosedColor.css('background-color') === 'rgb(255, 255, 255)') {
+				pallet.hide($('.button_color')[0], 2);
+				list.addColor(eventObject, pallet.colorClass, index);
+			}
+			else {
 				list.addColor(eventObject, pallet.colorClass, index);
 			}
 		}
