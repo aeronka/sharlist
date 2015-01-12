@@ -1,7 +1,8 @@
+
 $(document).ready(function() {
 	var pallet = new Pallet($('.add_color'));
-	var list = new List($('.list_elem'));
 	var legend = new Legend($('.legend'));
+	var list = new List($('.list_elem'), legend);
 	var $choosedColor = $('.choosed_color');
 	var $buttonColor = $('.button_color');
 	$choosedColor.hide();
@@ -20,10 +21,10 @@ $(document).ready(function() {
 			// добавление цвета
 			if ($choosedColor.css('background-color') === 'rgb(255, 255, 255)') {
 				pallet.hide($('.button_color')[0], 2);
-				list.addColor(eventObject, pallet.colorClass, index);
+				list.addColor(eventObject, pallet.colorClass, index, 1);
 			}
 			else {
-				list.addColor(eventObject, pallet.colorClass, index);
+				list.addColor(eventObject, pallet.colorClass, index, 0);
 			}
 		}
 		else {

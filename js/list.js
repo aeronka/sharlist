@@ -1,12 +1,13 @@
 
-function List(elem) {
+function List(elem, legend) {
 	this.$tagList = $('.list');
 	this.finalList = '';
 	this.itog = [];
 	this.$create = $('.new_elem');
 	this.sublist = [];
+	this.legend = legend;
 
-	//сделаем чистый список элементов
+	//сделаем список элементов
 	elem.each( function(i,n) {
 		this.itog.push(n.outerHTML);
 	}.bind(this));
@@ -66,10 +67,24 @@ List.prototype = {
 		this.itog[index] = item[0].outerHTML; 
 	},
 
-	addColor: function(eventObject, colorClass, index) {
+	addColor: function(eventObject, colorClass, index, flag) {
 		var item = $(eventObject.currentTarget);
-		item.children('div').removeClass().addClass('choice ' + colorClass);
-		this.itog[index] = item[0].outerHTML; 
+		var colorBeforeChange = item.children('div')[0].className.split(' ')[1];
+		console.log(colorBeforeChange);
+		if (flag !== 1) item.children('div').removeClass().addClass('choice ' + colorClass);
+		else item.children('div').removeClass().addClass('choice');
+		this.itog[index] = item[0].outerHTML;
+		// добавление/удаление цвета из легенды
+			//если количество классов у элемента списка 2
+		if (item.children('div')[0].className.split(' ').length === 2) {
+			//и если в итоговом массиве легенды еще нет такого цвета - добавим
+			if (!~this.legend.itogLegendColor.indexOf(colorClass)) this.legend.createColor(colorClass);	
+		}
+		else {
+			//весь список.each( function(i,n) {
+				//if (условие равенства удаляемого цвета) {}
+			//});
+		}
 	},
 
 	addSublist: function(newElemAll) { 
