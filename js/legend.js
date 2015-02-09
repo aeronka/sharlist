@@ -24,7 +24,9 @@ Legend.prototype = {
 		//обновленную легенду добавим на страницу
 		$('ul', this.$tagLegend).detach();
 		this.$tagLegend.append('<ul class="legend_colors">'+ this.finalListLegend +'</ul>');
-		//console.log(this.itogLegend);
+	},
+	deleteColor: function() {
+		
 	},
 	addColorName: function() {},
 	hide: function(eventObject) {
