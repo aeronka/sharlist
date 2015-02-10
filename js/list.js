@@ -6,12 +6,18 @@ function List(elem, legend) {
 	this.$create = $('.new_elem');
 	this.sublist = [];
 	this.legend = legend;
+	this.listColors = [];
 
 	//сделаем список элементов
 	elem.each( function(i,n) {
 		this.itog.push(n.outerHTML);
 	}.bind(this));
-} 
+
+	//сделаем список цветов,которые есть в списке
+	elem.children('div').each( function(i,n) {
+		this.listColors.push(n.className.split(' ')[1]);
+	}.bind(this));
+}
 
 List.prototype = {
 	add: function() {
@@ -70,8 +76,11 @@ List.prototype = {
 	addColor: function(eventObject, colorClass, index, flag) {
 		var item = $(eventObject.currentTarget);
 		var colorBeforeChange = item.children('div')[0].className.split(' ')[1];
-		console.log(colorBeforeChange);
-		if (flag !== 1) item.children('div').removeClass().addClass('choice ' + colorClass);
+		var kolColor = 0;
+		if (flag !== 1) {
+			item.children('div').removeClass().addClass('choice ' + colorClass);
+			this.listColors.push(colorClass);
+		}
 		else item.children('div').removeClass().addClass('choice');
 		this.itog[index] = item[0].outerHTML;
 		// добавление/удаление цвета из легенды
@@ -80,10 +89,13 @@ List.prototype = {
 			//и если в итоговом массиве легенды еще нет такого цвета - добавим
 			if (!~this.legend.itogLegendColor.indexOf(colorClass)) this.legend.createColor(colorClass);	
 		}
+			//если у элемента только один класс (choice), значит было удаление цвета и нужно проверить последний ли он, если да, то удалить из легенды, если нет, то ничего не делать
 		else {
-			//весь список.each( function(i,n) {
-				//if (условие равенства удаляемого цвета) {}
-			//});
+			for (var i = 0; i < this.listColors.length; i++) {
+				if (this.listColors[i] === colorBeforeChange) kolColor += 1;
+			};
+			console.log(kolColor);
+			if (kolColor === 1) this.legend.deleteColor(colorBeforeChange);
 		}
 	},
 
