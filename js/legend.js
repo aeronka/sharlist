@@ -4,6 +4,7 @@ function Legend(legend) {
 	this.finalListLegend = '';
 	this.$tagLegend = $('.legend');
 	this.itogLegendColor = [];
+	this.$add = $('.legend_fio');
 
 	//сделаем список элементов легенды
 	$('.legend_colors_elem').each( function(i,n) {
@@ -17,13 +18,9 @@ function Legend(legend) {
 
 Legend.prototype = {
 	createColor: function(newColor) {
-		this.itogLegend.push('<li class="legend_colors_elem"><span class="legend_choice ' + newColor + '"></span><input class="legend_fio" type="text" placeholder="фио"></li>');
+		this.itogLegend.push('<li class="legend_colors_elem"><span class="legend_choice ' + newColor + '"></span><form><input class="legend_fio" type="text" placeholder="фио"></form></li>');
 		this.itogLegendColor.push(newColor);
-		//склеим в строку все элементы легенды
-		this.finalListLegend = this.itogLegend.join('');
-		//обновленную легенду добавим на страницу
-		$('ul', this.$tagLegend).detach();
-		this.$tagLegend.append('<ul class="legend_colors">'+ this.finalListLegend +'</ul>');
+		this.updateLegend();
 	},
 
 	deleteColor: function(delColor) {
@@ -39,14 +36,27 @@ Legend.prototype = {
 		for (var i = 0; i < this.itogLegendColor.length; i++) {
 			if (this.itogLegendColor[i] === delColor) this.itogLegendColor.splice(i, 1);
 		};
+		this.updateLegend();
+	},
+
+	addColorName: function(eventObject, index) {
+		//берем элемент из поля для ввода
+		var newElem = this.$add.val();
+		if (!newElem) return;
+		console.log(eventObject);
+		console.log(index);
+		console.log(newElem);
+		
+	},
+
+	updateLegend: function() {
+		//легенда добавляется на страницу
 		//склеим в строку все элементы легенды
 		this.finalListLegend = this.itogLegend.join('');
-		//обновленную легенду добавим на страницу
+		//добавим на страницу
 		$('ul', this.$tagLegend).detach();
 		this.$tagLegend.append('<ul class="legend_colors">'+ this.finalListLegend +'</ul>');
 	},
-
-	addColorName: function() {},
 
 	hide: function(eventObject) {
 		this.$legend.hide();

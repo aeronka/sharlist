@@ -268,13 +268,13 @@ body {
 .arrow {
     position: absolute;
     top: 4px;
-    left: -21px;
+    left: -18px;
     display: inline-block;
     font-size: 30px;
     color: #FFFFFF;
     -webkit-transform: scaleX(0.9);
     -moz-transform: scaleX(0.9);
     -o-transform: scaleX(0.9);
-    transform: scaleX(0.9);
+    transform: scaleX(0.8);
     text-shadow: -3px 0px 4px rgba(0, 0, 0, 0.3);
 }

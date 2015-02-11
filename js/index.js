@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$choosedColor.hide();
 
 	//событие добавления
-	$('form').submit(function(eventObject) {
+	$('form', '.list').submit(function(eventObject) {
 		eventObject.preventDefault();
 		list.add();
 	});
@@ -60,5 +60,16 @@ $(document).ready(function() {
 		if ($('.legend').is(':visible')) legend.hide(eventObject.currentTarget);
 		else legend.show(eventObject.currentTarget);
 	});
+
+	//заполнение ФИО в легенде
+		// 	var index = $('.legend_colors_elem').index(this);
+	// 	legend.addColorName(eventObject, index);
+
+	$('form', '.legend').submit(function(eventObject) {
+		eventObject.stopPropagation();
+		console.log(1);
+	});
+
+
 
 });
