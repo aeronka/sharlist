@@ -31,7 +31,7 @@ Legend.prototype = {
 		//удаление элемента списка цветов из легенды (необходим номер элемента indexLegendItem)
 		for (var i = 0; i < this.itogLegend.length; i++) {
 			// нужно в массиве элементов легенды найти элемент,который содержит в себе удаляемый цвет, узнать его индекс
-			indexLegendItem = ~this.itogLegend[i].indexof(delColor);
+			if (~this.itogLegend[i].indexOf(delColor)) indexLegendItem = i;
 		};
 		//удаление элемента из массива легенды
 		this.itogLegend.splice(indexLegendItem, 1);
@@ -39,7 +39,6 @@ Legend.prototype = {
 		for (var i = 0; i < this.itogLegendColor.length; i++) {
 			if (this.itogLegendColor[i] === delColor) this.itogLegendColor.splice(i, 1);
 		};
-		console.log(this.itogLegend);
 		//склеим в строку все элементы легенды
 		this.finalListLegend = this.itogLegend.join('');
 		//обновленную легенду добавим на страницу

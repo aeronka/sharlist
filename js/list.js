@@ -76,13 +76,17 @@ List.prototype = {
 	addColor: function(eventObject, colorClass, index, flag) {
 		var item = $(eventObject.currentTarget);
 		var colorBeforeChange = item.children('div')[0].className.split(' ')[1];
-		var kolColor = 0;
+		var kolColor;
 		if (flag !== 1) {
 			item.children('div').removeClass().addClass('choice ' + colorClass);
 			this.listColors.push(colorClass);
 		}
 		else item.children('div').removeClass().addClass('choice');
 		this.itog[index] = item[0].outerHTML;
+		//удаление цвета из массива цветов списка
+		for (var i = 0; i < this.listColors.length; i++) {
+			if (this.listColors[i] === colorBeforeChange) {this.listColors.splice(i, 1); break;}
+		};
 		// добавление/удаление цвета из легенды
 			//если количество классов у элемента списка 2
 		if (item.children('div')[0].className.split(' ').length === 2) {
@@ -91,11 +95,11 @@ List.prototype = {
 		}
 			//если у элемента только один класс (choice), значит было удаление цвета и нужно проверить последний ли он, если да, то удалить из легенды, если нет, то ничего не делать
 		else {
+			kolColor = 0;
 			for (var i = 0; i < this.listColors.length; i++) {
 				if (this.listColors[i] === colorBeforeChange) kolColor += 1;
 			};
-			console.log(kolColor);
-			if (kolColor === 1) this.legend.deleteColor(colorBeforeChange);
+			if (kolColor === 0) this.legend.deleteColor(colorBeforeChange);
 		}
 	},
 
