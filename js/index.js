@@ -62,12 +62,10 @@ $(document).ready(function() {
 	});
 
 	//заполнение ФИО в легенде
-		// 	var index = $('.legend_colors_elem').index(this);
-	// 	legend.addColorName(eventObject, index);
-
-	$('form', '.legend').submit(function(eventObject) {
-		eventObject.stopPropagation();
-		console.log(1);
+	$('.legend').on('submit', 'form', function(eventObject) {
+		eventObject.preventDefault();
+		var index = $('form', '.legend').index(this);
+		legend.addColorName(eventObject, index);
 	});
 
 

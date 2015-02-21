@@ -4,7 +4,7 @@ function Legend(legend) {
 	this.finalListLegend = '';
 	this.$tagLegend = $('.legend');
 	this.itogLegendColor = [];
-	this.$add = $('.legend_fio');
+	// this.$add = $('.legend_fio');
 
 	//сделаем список элементов легенды
 	$('.legend_colors_elem').each( function(i,n) {
@@ -18,7 +18,7 @@ function Legend(legend) {
 
 Legend.prototype = {
 	createColor: function(newColor) {
-		this.itogLegend.push('<li class="legend_colors_elem"><span class="legend_choice ' + newColor + '"></span><form><input class="legend_fio" type="text" placeholder="фио"></form></li>');
+		this.itogLegend.push('<li class="legend_colors_elem"><span class="legend_choice ' + newColor + '"></span><form><input class="legend_fio" type="text" name="new_fio" placeholder="имя"></form></li>');
 		this.itogLegendColor.push(newColor);
 		this.updateLegend();
 	},
@@ -40,13 +40,23 @@ Legend.prototype = {
 	},
 
 	addColorName: function(eventObject, index) {
+		$add = $('.legend_fio');
 		//берем элемент из поля для ввода
-		var newElem = this.$add.val();
+		var newElem = $($add[index]).val();
 		if (!newElem) return;
-		console.log(eventObject);
-		console.log(index);
-		console.log(newElem);
-		
+		// console.log(eventObject);
+		// console.log(index);
+		// console.log(newElem);
+		//добавлять ли новое имя в массив с цветом, или в массив легенды ?
+
+		//заменим в итоговом массиве легенды прежнюю запись без фио на новую, с фио
+		$($('.legend_colors_elem', '.legend')[index]).val(newElem);
+		//$('.legend_colors_elem', '.legend')[index].value = newElem;
+		var newRow = $('.legend_colors_elem', '.legend')[index].outerHTML;
+		console.log(newRow);
+		// this.itogLegend[index] = newRow;
+		// this.updateLegend();
+		//console.log(this.itogLegend);
 	},
 
 	updateLegend: function() {

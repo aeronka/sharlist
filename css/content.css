@@ -130,3 +130,7 @@
     margin-left: 7px;
     border: 1px solid #dddee6;
 }
+
+form {
+    display: inline-block;
+}
