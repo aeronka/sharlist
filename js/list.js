@@ -49,8 +49,8 @@ List.prototype = {
 		var item = $(removedElem.currentTarget);
 		var child = $('.list_elem', item);
 		//проверка на подсписок (элемент относится к подсписку или нет)
-		var sublist = !!removedElem.currentTarget.parentElement.className;
-		if (!sublist) {
+		var sublist = removedElem.currentTarget.parentElement.className;
+		if (sublist !== 'sublist') {
 			if (item.hasClass('removed')) {
 				item.removeClass('removed');
 				child.removeClass('removed');
@@ -75,21 +75,26 @@ List.prototype = {
 
 	addColor: function(eventObject, colorClass, index, flag) {
 		var item = $(eventObject.currentTarget);
-		var colorBeforeChange = item.children('div')[0].className.split(' ')[1];
+		var colorBeforeChange = item.children('.choice')[0].className.split(' ')[1];
 		var kolColor;
+		// флаг не равен 1, добавляем или перезаписываем цвет элемента
 		if (flag !== 1) {
-			item.children('div').removeClass().addClass('choice ' + colorClass);
+			item.children('.choice').removeClass(colorBeforeChange).addClass(colorClass);
 			this.listColors.push(colorClass);
+			this.listColors[index]
 		}
-		else item.children('div').removeClass().addClass('choice');
+		// флаг равен 1, удаление цвета у элемента
+		else item.children('.choice').removeClass(colorBeforeChange);
 		this.itog[index] = item[0].outerHTML;
-		//удаление цвета из массива цветов списка
+
+		//удаление цвета из массива цветов списка - нужно предусмотреть изменение цвета при его замене, можно без цикла, ведь есть index
 		for (var i = 0; i < this.listColors.length; i++) {
 			if (this.listColors[i] === colorBeforeChange) {this.listColors.splice(i, 1); break;}
 		};
+
 		// добавление/удаление цвета из легенды
 			//если количество классов у элемента списка 2
-		if (item.children('div')[0].className.split(' ').length === 2) {
+		if (item.children('.choice')[0].className.split(' ').length === 2) {
 			//и если в итоговом массиве легенды еще нет такого цвета - добавим
 			if (!~this.legend.itogLegendColor.indexOf(colorClass)) this.legend.createColor(colorClass);	
 		}

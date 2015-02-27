@@ -101,6 +101,7 @@ body {
     border-radius: 3px;
     display: inline-block;
     vertical-align: middle;
+    display: none;
 }
 
 .tumbler {
