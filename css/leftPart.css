@@ -46,6 +46,10 @@ body {
     position: relative;
 }
 
+.button_legend {
+    width: 150px;
+}
+
 .button_legend:active {
     outline: none;
     box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.6);
@@ -62,6 +66,7 @@ body {
     border: 1px solid #B3B3B3;
     border-radius: 3px;
     cursor: pointer;
+    outline: none;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #eee9e9));
     background: -o-linear-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #eee9e9));
     background: -moz-linear-gradient(top, #FFFFFF, #eee9e9);
@@ -69,14 +74,34 @@ body {
     /*background: #ffffff;*/
 }
 
-.button_color_active {
+.color_active {
     background: #DCDCDC;
     outline: none;
+    width: 136px;
     box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.6);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
     background: -o-linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
     background: -moz-linear-gradient(top, #DCDCDC, #eee9e9);
     background: linear-gradient(linear, left top, left bottom, color-stop(0, #DCDCDC), color-stop(1, #eee9e9));
+}
+
+.button_color {
+    width: 136px;
+}
+
+.button_color:active {
+    outline: none;
+}
+
+.choosed_color {
+    height: 18px;
+    width: 16px;
+    border: 1px solid #B3B3B3;
+    background: rgb(255,255,255);
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    display: none;
 }
 
 .tumbler {
@@ -244,13 +269,13 @@ body {
 .arrow {
     position: absolute;
     top: 4px;
-    left: -21px;
+    left: -18px;
     display: inline-block;
     font-size: 30px;
     color: #FFFFFF;
     -webkit-transform: scaleX(0.9);
     -moz-transform: scaleX(0.9);
     -o-transform: scaleX(0.9);
-    transform: scaleX(0.9);
+    transform: scaleX(0.8);
     text-shadow: -3px 0px 4px rgba(0, 0, 0, 0.3);
 }

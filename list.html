@@ -5,7 +5,9 @@
         <title>Sharlist</title>
         <link rel="stylesheet" type="text/css" href="css/leftPart.css">
         <link rel="stylesheet" type="text/css" href="css/content.css">
-        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../jquery.js"></script>
+        <script src="js/pallet.js"></script>
+        <script src="js/legend.js"></script>
         <script src="js/list.js"></script>
         <script src="js/index.js"></script>
     </head>
@@ -16,7 +18,8 @@
                 <ul class="menu">
                     <li class="menu_elem"><button class="menu_button button_legend">Показать легенду</button></li>
                     <li class="menu_elem">
-                        <button class="menu_button button_color_active">Выбрать цвет &#9656;</button>
+                        <button class="menu_button button_color">Выбрать цвет &#9656;</button>
+                        <div class="choosed_color"></div>
                         <div class="add_color" hidden="true">
                             <div class="color">
                                 <span class="color_elem red"></span>
@@ -51,20 +54,7 @@
                         </li>
                         <li class="list_elem"><div class="choice green"> </div>
                             <span>Спальник в чехле на синтепоне с простроченной молнией сбоку, размер S температурой 10</span>
-                        </li><!--
-                        <li class="list_elem"><div class="choice green"> </div>
-                            <span>Котелок</span>
                         </li>
-                        <li class="list_elem"><div class="choice darkgreen"> </div>
-                            <span>Зарядки</span>
-                            <ul class="sublist">
-                                <li class="list_elem">от телефона</li>
-                                <li class="list_elem">от фотика</li>
-                            </ul>
-                        </li>
-                        <li class="list_elem"><div class="choice red"> </div>
-                            <span class="removed">Пенка</span>
-                        </li> -->
                     </ol>
                     <form><input class="new_elem" type="text" name="new_elem" placeholder="новый элемент"></form>
                 </div>
@@ -72,36 +62,7 @@
                     <h3 class="legend_name">Легенда</h3>
                     <ul class="legend_colors">
                         <li class="legend_colors_elem">
-                            <span class="legend_choice darkgreen"></span>
-                            <input class="legend_fio" type="text" placeholder="фио1">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice orange"></span>
-                            <input class="legend_fio" type="text" placeholder="фио2">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice deepblue"></span>
-                            <input class="legend_fio" type="text" placeholder="фио3">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice orange"></span>
-                            <input class="legend_fio" type="text" placeholder="фио2">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice deepblue"></span>
-                            <input class="legend_fio" type="text" placeholder="фио3">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice orange"></span>
-                            <input class="legend_fio" type="text" placeholder="фио2">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice deepblue"></span>
-                            <input class="legend_fio" type="text" placeholder="фио3">
-                        </li>
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice deepblue"></span>
-                            <input class="legend_fio" type="text" placeholder="фио3">
+                            <span class="legend_choice darkgreen"></span><form><input class="legend_fio" type="text" name="new_fio" placeholder="фио1"></form>
                         </li>
                     </ul>
                 </div>
