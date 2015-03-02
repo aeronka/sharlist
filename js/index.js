@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var $choosedColor = $('.choosed_color');
 	var $buttonColor = $('.button_color');
 
-	//событие добавления
+	//событие добавления элемента списка
 	$('form', '.list').submit(function(eventObject) {
 		eventObject.preventDefault();
 		list.add();
@@ -20,7 +20,7 @@ $(document).ready(function() {
 			// добавление цвета
 			// если выбранный цвет белый, то флаг = 1 - это удаление цвета
 			if ($choosedColor.css('background-color') === 'rgb(255, 255, 255)') {
-				pallet.hide($('.button_color')[0], 2);
+				pallet.hide($($('.button_color')[0]), 2);
 				list.addColor(eventObject, pallet.colorClass, index, 1);
 			}
 			else {
@@ -42,7 +42,7 @@ $(document).ready(function() {
 	//нажатие кнопки "Выбрать цвет"
 	$('.button_color').on('click', function(eventObject) {
 		if ($(eventObject.currentTarget).hasClass('color_active')) {
-			pallet.hide(eventObject.currentTarget);
+			pallet.hide($(eventObject.currentTarget));
 		}
 		else {
 			pallet.show(eventObject.currentTarget);
@@ -51,9 +51,9 @@ $(document).ready(function() {
 
 	//нажатие на цвет в палитре
 	$('.menu_elem').on('click', '.color_elem', function(eventObject) {
-		var parent = $buttonColor;
+		var parent = $buttonColor[0];
 		var color = eventObject.currentTarget.className.split(' ')[1];
-		pallet.hide(parent[0], 1, $choosedColor, color);
+		pallet.hide($(parent), 1, $choosedColor, color);
 	});
 
 	//нажатие на "показать легенду"

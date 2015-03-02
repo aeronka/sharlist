@@ -34,7 +34,8 @@ List.prototype = {
 		}
 		else {
 			this.itog.push('<li class="list_elem"><div class="choice"> </div><span>'+ newElem +'</span></li>');
-
+			//создадим пустое место под цвет нового элемента
+			this.listColors.push('');
 			//склеим в строку все элементы списка
 			this.finalList = this.itog.join('');
 		}
@@ -77,24 +78,27 @@ List.prototype = {
 		var item = $(eventObject.currentTarget);
 		var colorBeforeChange = item.children('.choice')[0].className.split(' ')[1];
 		var kolColor;
+		var colorItem = item.children('.choice');
 		// флаг не равен 1, добавляем или перезаписываем цвет элемента
 		if (flag !== 1) {
-			item.children('.choice').removeClass(colorBeforeChange).addClass(colorClass);
-			this.listColors.push(colorClass);
-			this.listColors[index]
+			colorItem.removeClass(colorBeforeChange).addClass(colorClass);
+
+			// в массив цветов списка в элемент с индексом index вставить/ заменить новый цвет
+			this.listColors[index] = colorClass;
+			this.itog[index] = item[0].outerHTML;
 		}
 		// флаг равен 1, удаление цвета у элемента
-		else item.children('.choice').removeClass(colorBeforeChange);
-		this.itog[index] = item[0].outerHTML;
+		else {
+			colorItem.removeClass(colorBeforeChange);
+			this.itog[index] = item[0].outerHTML;
 
-		//удаление цвета из массива цветов списка - нужно предусмотреть изменение цвета при его замене, можно без цикла, ведь есть index
-		for (var i = 0; i < this.listColors.length; i++) {
-			if (this.listColors[i] === colorBeforeChange) {this.listColors.splice(i, 1); break;}
-		};
+			//удаление цвета с номером  index из массива цветов списка, специально с дыркой, чтобы понимать что у элемента списка с таким же индексом нет цвета
+			this.listColors[index] = '';
+		}
 
 		// добавление/удаление цвета из легенды
 			//если количество классов у элемента списка 2
-		if (item.children('.choice')[0].className.split(' ').length === 2) {
+		if (colorItem[0].className.split(' ').length === 2) {
 			//и если в итоговом массиве легенды еще нет такого цвета - добавим
 			if (!~this.legend.itogLegendColor.indexOf(colorClass)) this.legend.createColor(colorClass);	
 		}

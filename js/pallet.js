@@ -12,19 +12,18 @@ Pallet.prototype = {
 	hide: function(eventObject, flag, choosedColor, color) {
 		this.colorClass = color;
 		if (flag === 1) {
-			$(eventObject)[0].innerText = 'Выбран цвет ▸';
+			eventObject[0].innerText = 'Выбран цвет ▸';
 			$(choosedColor).show().removeClass().addClass('choosed_color ' + this.colorClass);
 		}
 		else if (flag === 2) {
-			$(eventObject)[0].innerText = 'Удаление цвета';
+			eventObject[0].innerText = 'Удаление цвета';
 		}
 		else {
-			$(eventObject).removeClass('color_active');
-			$(eventObject)[0].innerText = 'Выбрать цвет ▸';
+			eventObject.removeClass('color_active');
+			eventObject[0].innerText = 'Выбрать цвет ▸';
 			this.$newChoosedColor.hide().removeClass().addClass('choosed_color');
 		}
 		this.$pallet.hide();
 	},
-	chooseColor: function() {}
 };
 Pallet.prototype.constructor = Pallet;

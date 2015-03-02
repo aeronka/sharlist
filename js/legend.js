@@ -24,14 +24,12 @@ Legend.prototype = {
 	},
 
 	deleteColor: function(delColor) {
-		var indexLegendItem = 0;
 		//удаление элемента списка цветов из легенды (необходим номер элемента indexLegendItem)
 		for (var i = 0; i < this.itogLegend.length; i++) {
 			// нужно в массиве элементов легенды найти элемент,который содержит в себе удаляемый цвет, узнать его индекс
 			if (~this.itogLegend[i].indexOf(delColor)) {
-				indexLegendItem = i;
 				//удаление элемента из массива легенды
-				this.itogLegend.splice(indexLegendItem, 1); 
+				this.itogLegend.splice(i, 1); 
 				break;
 			}
 		};
@@ -48,19 +46,16 @@ Legend.prototype = {
 		//берем элемент из поля для ввода
 		var newElem = $add.eq(index).val();
 		if (!newElem) return;
-		// console.log(eventObject);
-		// console.log(index);
-		// console.log(newElem);
 		//добавлять ли новое имя в массив с цветом, или в массив легенды ?
 
 		//заменим в итоговом массиве легенды прежнюю запись без фио на новую, с фио
 		$($('.legend_colors_elem', '.legend')[index]).val(newElem);
 		//$('.legend_colors_elem', '.legend')[index].value = newElem;
 		var newRow = $('.legend_colors_elem', '.legend')[index].outerHTML;
-		//console.log(newRow);
+		
 		// this.itogLegend[index] = newRow;
 		// this.updateLegend();
-		//console.log(this.itogLegend);
+
 	},
 
 	updateLegend: function() {
