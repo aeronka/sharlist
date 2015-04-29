@@ -10,6 +10,26 @@
         <script src="js/legend.js"></script>
         <script src="js/list.js"></script>
         <script src="js/index.js"></script>
+        
+
+        <script type="text/javascript">
+            var data = {};
+        </script>
+        <script src="data.js"></script>
+        <script src="templates.js"></script>
+        <script src="mustache.min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+            $('.content').prepend(
+                Mustache.render(templ.tpllistname, data.list)
+            );
+        });
+        $(function() {
+            $('.list').prepend(
+                Mustache.render(templ.tpllist, data.list_item)
+            );
+        });
+    </script>
     </head>
     <body>
         <div class="page">
@@ -46,16 +66,7 @@
                 </div>
             </div>
             <div class="content">
-                <h2 class="list_name">В путь:</h2>
                 <div class="list">
-                    <ol>
-                         <li class="list_elem"><div class="choice purple"> </div>
-                            <span>Палатка</span>
-                        </li>
-                        <li class="list_elem"><div class="choice green"> </div>
-                            <span>Спальник в чехле на синтепоне с простроченной молнией сбоку, размер S температурой 10</span>
-                        </li>
-                    </ol>
                     <form><input class="new_elem" type="text" name="new_elem" placeholder="новый элемент"></form>
                 </div>
                 <div class="legend" hidden="true">
