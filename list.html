@@ -10,7 +10,6 @@
         <script src="js/legend.js"></script>
         <script src="js/list.js"></script>
         <script src="js/index.js"></script>
-        
 
         <script type="text/javascript">
             var data = {};
@@ -19,6 +18,11 @@
         <script src="templates.js"></script>
         <script src="mustache.min.js"></script>
         <script type="text/javascript">
+        $(function() {
+            $('.for_friends').append(
+                Mustache.render(templ.tplurl, data.list)
+            );
+        });
         $(function() {
             $('.content').prepend(
                 Mustache.render(templ.tpllistname, data.list)
@@ -29,7 +33,12 @@
                 Mustache.render(templ.tpllist, data.list_item)
             );
         });
-    </script>
+        $(function() {
+            $('.legend').append(
+                Mustache.render(templ.tpllegend, data.legend)
+            );
+        });
+        </script>
     </head>
     <body>
         <div class="page">
@@ -62,7 +71,6 @@
                 </ul>
                 <div class="for_friends">
                     <h2 class="link_name">Cсылка для друзей:</h2>
-                    <input class="link" readonly="readonly" type="text" value="http://sharlist.ru/uzupg6tw/">
                 </div>
             </div>
             <div class="content">
@@ -71,11 +79,6 @@
                 </div>
                 <div class="legend" hidden="true">
                     <h3 class="legend_name">Легенда</h3>
-                    <ul class="legend_colors">
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice darkgreen"></span><form><input class="legend_fio" type="text" name="new_fio" placeholder="фио1"></form>
-                        </li>
-                    </ul>
                 </div>
             </div>  
         </div>

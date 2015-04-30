@@ -30,3 +30,16 @@ data.list_item = {
         }
     ]
 };
+
+data.legend = {
+	legend_items: [
+		{
+			personname: 'Пётр Васильев',
+			color: 'purple'
+		},
+		{
+			personname: 'Василий Прекрасный',
+			color: 'green'
+		}
+	]
+};
