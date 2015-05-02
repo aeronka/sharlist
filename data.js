@@ -1,3 +1,5 @@
+var data = {};
+
 data.list = {
     list_name: 'В путь:',
     url: 'http://sharlist.ru/uzupg6tw/'
@@ -11,7 +13,18 @@ data.list_item = {
         },
         {
             item: 'Спальник',
-            color: 'green'
+            color: 'green',
+            sublist: {sublist_items: [
+		        	{
+		            	item: 'спальник Артёма',
+		            	iditemlist: '2'
+		        	},
+		        	{
+		            	item: 'спальник Натуса',
+		            	iditemlist: '2'
+		        	}
+	    		]
+	    	}
         },
         {
             item: 'Зарядки для устройств',

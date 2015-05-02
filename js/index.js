@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	var pallet = new Pallet($('.add_color'));
 	var legend = new Legend($('.legend'));
-	var list = new List($('.list_elem'), legend);
+	var list = new List($('ol > .list_elem'), legend);
 	var $choosedColor = $('.choosed_color');
 	var $buttonColor = $('.button_color');
 
