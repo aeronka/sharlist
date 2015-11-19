@@ -16,11 +16,11 @@ data.list_item = {
             color: 'green',
             sublist: {sublist_items: [
 		        	{
-		            	item: 'спальник Артёма',
+		            	item: 'спальник Василисы',
 		            	iditemlist: '2'
 		        	},
 		        	{
-		            	item: 'спальник Натуса',
+		            	item: 'спальник Петра',
 		            	iditemlist: '2'
 		        	}
 	    		]
@@ -51,7 +51,7 @@ data.legend = {
 			color: 'purple'
 		},
 		{
-			personname: 'Василий Прекрасный',
+			personname: 'Василиса Прекрасная',
 			color: 'green'
 		}
 	]
