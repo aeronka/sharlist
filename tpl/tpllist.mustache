@@ -1,0 +1,14 @@
+<ol>
+    {{#list_items}}
+        <li class="list_elem"><div class="choice {{color}}"> </div>
+            <span>{{item}}</span>
+            {{#sublist}}
+	            <ul class="sublist">
+	    			{{#sublist_items}}
+	        			<li class="list_elem">{{item}}</li>
+	    			{{/sublist_items}}
+				</ul>
+			{{/sublist}}
+        </li>
+    {{/list_items}}
+</ol>
