@@ -6,6 +6,26 @@
         <link rel="stylesheet" type="text/css" href="css/leftPart.css">
         <link rel="stylesheet" type="text/css" href="css/content.css">
         <script src="../jquery.js"></script>
+        <script src="data.js"></script>
+        <script src="templates.js"></script>
+        <script src="mustache.min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+            $('.for_friends').append(
+                Mustache.render(templ.tplurl, data.list)
+            );
+            $('.content').prepend(
+                Mustache.render(templ.tpllistname, data.list)
+            );
+            $('.list').prepend(
+                Mustache.render(templ.tpllist, data.list_item)
+            );
+            $('.legend').append(
+                Mustache.render(templ.tpllegend, data.legend)
+            );
+        });
+        </script>
+
         <script src="js/pallet.js"></script>
         <script src="js/legend.js"></script>
         <script src="js/list.js"></script>
@@ -42,29 +62,14 @@
                 </ul>
                 <div class="for_friends">
                     <h2 class="link_name">Cсылка для друзей:</h2>
-                    <input class="link" readonly="readonly" type="text" value="http://sharlist.ru/uzupg6tw/">
                 </div>
             </div>
             <div class="content">
-                <h2 class="list_name">В путь:</h2>
                 <div class="list">
-                    <ol>
-                         <li class="list_elem"><div class="choice purple"> </div>
-                            <span>Палатка</span>
-                        </li>
-                        <li class="list_elem"><div class="choice green"> </div>
-                            <span>Спальник в чехле на синтепоне с простроченной молнией сбоку, размер S температурой 10</span>
-                        </li>
-                    </ol>
                     <form><input class="new_elem" type="text" name="new_elem" placeholder="новый элемент"></form>
                 </div>
                 <div class="legend" hidden="true">
                     <h3 class="legend_name">Легенда</h3>
-                    <ul class="legend_colors">
-                        <li class="legend_colors_elem">
-                            <span class="legend_choice darkgreen"></span><form><input class="legend_fio" type="text" name="new_fio" placeholder="фио1"></form>
-                        </li>
-                    </ul>
                 </div>
             </div>  
         </div>

@@ -7,6 +7,7 @@ function List(elem, legend) {
 	this.sublist = [];
 	this.legend = legend;
 	this.listColors = [];
+	this.lastSublist = $('ul > .list_elem', 'ol > .list_elem:last');
 
 	//сделаем список элементов
 	elem.each( function(i,n) {
@@ -17,6 +18,14 @@ function List(elem, legend) {
 	elem.children('div').each( function(i,n) {
 		this.listColors.push(n.className.split(' ')[1]);
 	}.bind(this));
+
+	//подсписок последнего элемента (если есть)
+	if (this.lastSublist) {
+		this.lastSublist.each( function(i,n) {
+			this.sublist.push(n.outerHTML);
+		}.bind(this));
+	}
+
 }
 
 List.prototype = {
@@ -28,7 +37,7 @@ List.prototype = {
 		if (!newElem) return;
 
 		//проверим первый символ из нового элемента, и является ли элемент началом подсписка
-		if (newElem[0] === ' ') { 
+		if (newElem[0] === ' ') { console.log();
 			if (!~this.itog[this.itog.length - 1].indexOf('ul')) this.sublist = []; 
 			this.addSublist(newElem);
 		}
